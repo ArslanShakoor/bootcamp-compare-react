@@ -1,6 +1,7 @@
-import React,{Component} from 'react'
-import { connect } from 'react-redux' 
-import { fetchCamps } from '../actions'
+import _ from 'lodash';
+import React,{Component} from 'react';
+import { connect } from 'react-redux';
+import { fetchCamps } from '../actions';
 
 
 class CampsIndex extends Component{
@@ -9,17 +10,27 @@ class CampsIndex extends Component{
        this.props.fetchCamps();
 	}
 
+	renderPosts(){
+		return _.map(this.props.camps, camp=>{ 
+		return(	
+			<li className = "list-group-item" key = { camp.name }> 
+			{camp.name}
+		 	</li>
+		); 	
+	}); 
+	} 
+
 	render(){
 		return(
-
-			<div> Bootcamps List </div>
+           <div>
+             {this.renderPosts()}
+           </div>
         );
 	}
 } 
 
-// function mapStateToProps(dispatch) {
-// 	// body...
-// 	return { camps};
-// }
+function mapStateToProps({camps}) {
+  return { camps };
+}
 
-export default connect(null,{fetchCamps})(CampsIndex)
+ export default connect(mapStateToProps, { fetchCamps }) (CampsIndex);  

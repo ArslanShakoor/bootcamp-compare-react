@@ -1,13 +1,11 @@
-import axios from 'axios'
-export const FETCH_POSTS = 'fetch_posts'
-const ROOT_URL = 'http://localhost:3000/'
+import axios from 'axios';
+export const FETCH_CAMPS = 'fetch_camps';
+const ROOT_URL = 'http://localhost:3000/';
 
 export function fetchCamps(){
-	
-    
-   const request = axios.get(`${ROOT_URL}camps`);
+	const request = axios.get('http://localhost:3000/camps');
 	return{
-		type: FETCH_POSTS,
-		paylaod: request
-	}
+		type: FETCH_CAMPS,
+		payload: request
+	};
 }

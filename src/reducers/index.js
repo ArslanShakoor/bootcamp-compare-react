@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
+import CampsReducer from './reducer_camps';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+   camps: CampsReducer
 });
 
 export default rootReducer;
+
