@@ -10,6 +10,8 @@ import promise from 'redux-promise';
 import reducers from './reducers';
 import CampsIndex from './components/camps_index';
 import CampsNew from './components/camps_new';
+import CampsShow from './components/camps_show';
+import CampsEdit from './components/camps_edit'
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
@@ -18,6 +20,8 @@ ReactDOM.render(
    <div>
 	    <Switch>
          <Route path ='/camps/new' component={CampsNew}/>
+         <Route path ="/camps/show/:id" component={CampsShow}/>
+         <Route path ="/camps/edit/:id" component={CampsEdit}/>
 	       <Route path ="/" component={CampsIndex}/>
           
 	    </Switch>

@@ -1,10 +1,40 @@
 import React, {Component} from 'react';
-import { Field, reduxForm} from 'redux-form';
-import { createCamps } from '../actions';
+import { Field, reduxForm, formValues, initialize} from 'redux-form';
+import { updateCamps,fetchCamp } from '../actions';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 
-class CampsNew extends Component{
+class CampsEdit extends Component{
+
+	componentDidMount(){
+		const { id } = this.props.match.params;
+		console.log(id);
+		this.handleInitialize();
+		
+ 
+	} 
+
+
+	handleInitialize() {
+	   console.log(this.props.fees)
+       const initData = {
+      "name":this.props.camp.name,
+      "fees":this.props.camp.fees,
+      "course":this.props.camp.course,
+      "website":this.props.camp.website
+       
+    };
+ 
+    this.props.initialize(initData);
+  }
+  
+
+
+
+ 
+	 
 	renderField(field){
+		
 		const {meta:{touched, error}} = field;
 		return(
           <div className="form-group">
@@ -12,6 +42,9 @@ class CampsNew extends Component{
             <input
               className="form-control"
               {...field.input}
+              
+            
+               
 
             />  
             <div className="text-help">
@@ -25,39 +58,58 @@ class CampsNew extends Component{
 	}
 	onSubmit(values){
 		console.log(values);
-		this.props.createCamps(values);
+		this.props.updateCamps(values);
 
 	}
 
 	render(){
-		const {handleSubmit} = this.props
+		const {handleSubmit, camp} = this.props;
+		console.log(camp.name)
+		  
+		 
+		 
+
 		return(
              
-             
+          
         <form onSubmit = {handleSubmit(this.onSubmit.bind(this))}>
 
           <Field
             label = "Name"
             name = "name"
             component = {this.renderField}
-            
+          					
+             
+
+
           />
           <Field
             label = "Fees"
             name  = "fees"
+           
             component = {this.renderField}
+             
+            
            /> 
             <Field
             label = "Course"
             name  = "course"
+          
             component = {this.renderField}
+             
+
+            
            />
             <Field
             label = "Website"
             name  = "website"
+             
             component = {this.renderField}
+             
+             
            />
            <button type="submit" className="btn btn-primary">Submit</button>
+            
         </form>
              
 		);
@@ -87,9 +139,14 @@ function validate(values) {
 
 	return errors;	
 }
+
+function mapStateToProps({ camps}, ownProps){
+	return { camp: camps[ownProps.match.params.id]}
+}
 export default reduxForm({
 	validate,
-	form: 'PostNewCamp'
+	form: 'PostNewCamp',
+	enableReinitialize: true,		
 })(
-connect(null,{createCamps})(CampsNew)
+connect(mapStateToProps,{updateCamps,fetchCamp})(CampsEdit)
 );
