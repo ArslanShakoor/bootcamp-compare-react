@@ -11,7 +11,8 @@ import reducers from './reducers';
 import CampsIndex from './components/camps_index';
 import CampsNew from './components/camps_new';
 import CampsShow from './components/camps_show';
-import CampsEdit from './components/camps_edit'
+import CampsEdit from './components/camps_edit';
+import SessionsNew from './components/sessions/sessions_new';
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
@@ -21,8 +22,10 @@ ReactDOM.render(
 	    <Switch>
          <Route path ='/camps/new' component={CampsNew}/>
          <Route path ="/camps/show/:id" component={CampsShow}/>
-         <Route path ="/camps/edit/:id" component={CampsEdit}/>
+         <Route path ="/camps/edit/:id" component={CampsNew}/>
+         <Route path ="/login" component={SessionsNew}/>
 	       <Route path ="/" component={CampsIndex}/>
+         }
           
 	    </Switch>
    </div>

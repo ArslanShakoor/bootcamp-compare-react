@@ -16,7 +16,8 @@ class CampsEdit extends Component{
 
 
 	handleInitialize() {
-	   console.log(this.props.fees)
+
+	   
        const initData = {
       "name":this.props.camp.name,
       "fees":this.props.camp.fees,

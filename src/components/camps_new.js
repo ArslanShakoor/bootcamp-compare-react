@@ -1,9 +1,39 @@
 import React, {Component} from 'react';
-import { Field, reduxForm} from 'redux-form';
-import { createCamps } from '../actions';
+import { Field, reduxForm, initialize} from 'redux-form';
+import { createCamps,fetchCamp,updateCamp } from '../actions';
 import { connect } from 'react-redux';
 
 class CampsNew extends Component{
+
+    componentDidMount(){
+
+	const { id } = this.props.match.params;	 
+        if (id) {
+          this.props.fetchCamp(id);		
+		  this.handleInitialize();
+	    }
+	}
+		
+ 
+	
+
+	handleInitialize() {
+	    
+		 
+             
+       const initData = {
+      "name":this.props.camp.name,
+      "fees":this.props.camp.fees,
+      "course":this.props.camp.course,
+      "website":this.props.camp.website,
+
+     
+       
+    };
+ 
+    this.props.initialize(initData);
+  }
+
 	renderField(field){
 		const {meta:{touched, error}} = field;
 		return(
@@ -24,23 +54,29 @@ class CampsNew extends Component{
 
 	}
 	onSubmit(values){
-		console.log(values);
-		this.props.createCamps(values);
+		console.log(values); 
+		const { id } = this.props.match.params;
+		if(id){
+		this.props.updateCamp(id, values)		
+		}
+	    else{
+        this.props.createCamps(values); 
+	    }
+
 
 	}
 
 	render(){
 		const {handleSubmit} = this.props
 		return(
-             
-             
+		      
         <form onSubmit = {handleSubmit(this.onSubmit.bind(this))}>
 
           <Field
             label = "Name"
             name = "name"
             component = {this.renderField}
-            
+
           />
           <Field
             label = "Fees"
@@ -59,7 +95,7 @@ class CampsNew extends Component{
            />
            <button type="submit" className="btn btn-primary">Submit</button>
         </form>
-             
+            
 		);
 	}
 
@@ -87,9 +123,15 @@ function validate(values) {
 
 	return errors;	
 }
+
+function mapStateToProps({ camps}, ownProps){
+	return { camp: camps[ownProps.match.params.id]}
+}
+
 export default reduxForm({
 	validate,
 	form: 'PostNewCamp'
+	 
 })(
-connect(null,{createCamps})(CampsNew)
+connect(mapStateToProps,{createCamps,fetchCamp,updateCamp})(CampsNew)
 );

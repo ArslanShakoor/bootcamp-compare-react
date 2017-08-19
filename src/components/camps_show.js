@@ -40,7 +40,7 @@ class CampsShow extends Component{
 
 	 
 }
-function mapStateToProps({ camps}, ownProps){
+function mapStateToProps({camps}, ownProps){
 	return { camp: camps[ownProps.match.params.id]}
 }
 

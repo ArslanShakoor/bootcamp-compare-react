@@ -8,6 +8,12 @@ import { Link } from "react-router-dom"
 class CampsIndex extends Component{
 
 	componentDidMount(){
+		if(!this.props.sessions){
+			return  <div> loadding</div>
+		}
+
+
+		console.log(this.props.sessions);
        this.props.fetchCamps();
 	}
 
@@ -26,15 +32,17 @@ class CampsIndex extends Component{
 
 	render(){
 		return(
+			 
            <div>
+
              {this.renderPosts()}
            </div>
         );
 	}
 } 
 
-function mapStateToProps({camps}) {
-  return { camps };
+function mapStateToProps({camps, sessions}) {
+  return { camps, sessions };
 }
 
  export default connect(mapStateToProps, { fetchCamps }) (CampsIndex);  
