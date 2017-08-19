@@ -9,7 +9,7 @@ const config = {headers: {"X-User-Email" : "marketingconso@gmail.com", "X-User-T
 
 export function fetchCamps(){
 
-	const {sessions} = getState()
+	 
     const request = axios.get(`${ROOT_URL}camps`, config);
 	return{
 		type: FETCH_CAMPS,

@@ -7,14 +7,12 @@ import { Link } from "react-router-dom"
 
 class CampsIndex extends Component{
 
+	 
+
 	componentDidMount(){
-		if(!this.props.sessions){
-			return  <div> loadding</div>
-		}
-
-
+		 
 		console.log(this.props.sessions);
-       this.props.fetchCamps();
+        this.props.fetchCamps();
 	}
 
 	renderPosts(){
@@ -24,8 +22,10 @@ class CampsIndex extends Component{
 			<li className = "list-group-item" key = { camp.id }> 
 			<Link to = {`camps/show/${camp.id}`}>
 			{camp.name}
+			{this.props.sessions}
 			</Link>
 		 	</li>
+		 	 
 		); 	
 	}); 
 	} 
@@ -41,8 +41,12 @@ class CampsIndex extends Component{
 	}
 } 
 
-function mapStateToProps({camps, sessions}) {
-  return { camps, sessions };
-}
+const mapStateToProps = (state) => {
+    return {
+        sessions: state.sessions,
+        camps: state.camps
+         
+    };
+};
 
- export default connect(mapStateToProps, { fetchCamps }) (CampsIndex);  
+export default connect(mapStateToProps, { fetchCamps }) (CampsIndex);  
