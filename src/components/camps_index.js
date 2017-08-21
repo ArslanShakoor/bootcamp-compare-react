@@ -11,8 +11,7 @@ class CampsIndex extends Component{
 
 	componentDidMount(){
 		 
-		
-        this.props.fetchCamps();
+	  this.props.fetchCamps();
 	}
 
 	renderPosts(){

@@ -1,0 +1,12 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+
+.navbar-header {
+    background-color: #F5F5F5;
+    border-bottom: 1px solid #BBBBBB;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+}

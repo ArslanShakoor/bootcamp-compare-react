@@ -1,12 +1,22 @@
 import React, {Component} from 'react';
- 
-const navbarInstance = (
-  <Navbar inverse collapseOnSelect>
+import ReactDOM from 'react-dom';
+import {Link} from 'react-router-dom'
+import { LinkContainer } from 'react-router-bootstrap';
+
+
+import { Navbar, Nav, NavItem, NavDropdown, Button, Jumbotron, MenuItem} from 'react-bootstrap';
+
+class Header extends Component {
+
+render() {
+
+  const appNavbar = (
+  <Navbar inverse fluid collapseOnSelect>
     <Navbar.Header>
-      <Navbar.Brand>
-        <a href="#">React-Bootstrap</a>
-      </Navbar.Brand>
-      <Navbar.Toggle />
+        <Navbar.Brand>
+          <a href="#">CODE SCHOOL</a>
+        </Navbar.Brand>
+        <Navbar.Toggle />
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav>
@@ -20,14 +30,29 @@ const navbarInstance = (
           <MenuItem eventKey={3.3}>Separated link</MenuItem>
         </NavDropdown>
       </Nav>
-      <Nav pullRight>
-        <NavItem eventKey={1} href="#">Link Right</NavItem>
-        <NavItem eventKey={2} href="#">Link Right</NavItem>
-      </Nav>
+
+        <div class="row">
+        <Nav pullRight>
+          <NavItem eventKey={1} href="#">Link Right</NavItem>
+          <LinkContainer to="/login">
+          <NavItem eventKey={2} >Login</NavItem>
+          </LinkContainer>
+           
+
+        </Nav>
+        </div>
+      
     </Navbar.Collapse>
-  </Navbar>
+</Navbar>
 );
 
-ReactDOM.render(navbarInstance, mountNode);
+    return (
+    <div>
+      {appNavbar}
+    </div>
+    );
+  }
+}
 
+export default Header;
  

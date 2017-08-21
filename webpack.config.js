@@ -14,7 +14,9 @@ module.exports = {
       query: {
         presets: ['react', 'es2015', 'stage-1']
       }
-    }]
+    },
+    { test: /\.css$/, loader: "style-loader!css-loader" },
+      { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel'}]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']

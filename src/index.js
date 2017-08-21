@@ -16,6 +16,7 @@ import CampsShow from './components/camps_show';
 import CampsEdit from './components/camps_edit';
 import SessionsNew from './components/sessions/sessions_new';
 import Header from "./components/header"
+
  
  
 
@@ -38,7 +39,7 @@ ReactDOM.render(
    <Provider store={ store }>
    <BrowserRouter>
    <div>
-      <div className = 'header'>{ Header }</div>
+      <div><Header /></div>
 	    <Switch>
          <Route path ='/camps/new' component={CampsNew}/>
          <Route path ="/camps/show/:id" component={CampsShow}/>
