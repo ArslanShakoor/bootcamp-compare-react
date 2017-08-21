@@ -10,6 +10,7 @@ import './css/style.css';
 
 class SessionsNew extends Component{
     renderField(field){
+    	const {meta:{touched, error}} = field;
     	return(
           <div className = "field-wrap">
           <label>
@@ -22,6 +23,10 @@ class SessionsNew extends Component{
               
 
             />
+            <div className="text-help">
+
+            {touched ? error : ""}
+           </div>
            
           </div>
 
@@ -33,10 +38,8 @@ class SessionsNew extends Component{
        this.props.fetchSessions(values)
 	}
 	render(){
-        const {handleSubmit, sessions} = this.props;
-         if(sessions){
-         	console.log(sessions)
-         }
+        const {handleSubmit} = this.props;
+        
 		return(
 		    	 
 		  
@@ -71,12 +74,28 @@ class SessionsNew extends Component{
 		);
 	}
 }
+function validate(values) {
+	// body...
+	const errors = {};
+	if(!values.email){
+		errors.email="Enter the Email";
+	}
+	
+	if(!values.password){
+		errors.password="Enter the Password";
+	}
+
+	 
+
+	return errors;	
+}
 function mapStateToProps({sessions}) {
   return { sessions };
 }
 
 export default reduxForm({
-  form: 'simple' // a unique identifier for this form
+  validate,	
+  form: 'login' // a unique identifier for this form
 })(
 connect(mapStateToProps,{fetchSessions})(SessionsNew)
 );
