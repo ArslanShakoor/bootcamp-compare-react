@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { CREATE_SESSIONS } from "../actions/sessions";
  
+ 
 
 export default function (state= {}, action) {
 	// body...

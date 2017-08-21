@@ -4,7 +4,7 @@ import SessionsReducer from './reducer_sessions';
 
 import { reducer as newCampReducer} from 'redux-form'
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
    camps: CampsReducer,
    form: newCampReducer,
    sessions: SessionsReducer

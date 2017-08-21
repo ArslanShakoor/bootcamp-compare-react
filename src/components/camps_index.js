@@ -11,7 +11,7 @@ class CampsIndex extends Component{
 
 	componentDidMount(){
 		 
-		console.log(this.props.sessions);
+		
         this.props.fetchCamps();
 	}
 
@@ -20,10 +20,9 @@ class CampsIndex extends Component{
 		return(	
 
 			<li className = "list-group-item" key = { camp.id }> 
-			<Link to = {`camps/show/${camp.id}`}>
-			{camp.name}
-			{this.props.sessions}
-			</Link>
+				<Link to = {`camps/show/${camp.id}`}>
+				{camp.name}
+				</Link>
 		 	</li>
 		 	 
 		); 	
@@ -34,8 +33,7 @@ class CampsIndex extends Component{
 		return(
 			 
            <div>
-
-             {this.renderPosts()}
+           {this.renderPosts()}
            </div>
         );
 	}
@@ -43,7 +41,6 @@ class CampsIndex extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        sessions: state.sessions,
         camps: state.camps
          
     };
