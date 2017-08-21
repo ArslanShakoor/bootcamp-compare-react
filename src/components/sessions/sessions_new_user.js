@@ -1,14 +1,15 @@
-import React, {Component} from 'react';
+ import React, {Component} from 'react';
 import {Field, reduxForm } from 'redux-form';
 import { fetchSessions } from '../../actions/sessions';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+
 import './css/style.css';
  
  
 
 
-class SessionsNew extends Component{
+class SessionsNewUser extends Component{
     renderField(field){
     	return(
           <div className = "field-wrap">
@@ -43,28 +44,43 @@ class SessionsNew extends Component{
 		   <div className="form">
       
 		      <ul className="tab-group">
-		        <li className="tab active"><a href="#login">Log In</a></li>
-		        <li className="tab"><Link to ="/signup">Sign Up</Link></li>
+		        <li className="tab"><Link to="/login">Log In</Link></li>
+		        <li className="tab active"><a href="#signup">Sign Up</a></li>
 		      </ul>	
 
 			  <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-			  <div id="login">   
-                  <h1>Welcome Back!</h1>	
+			  <div id="signup">   
+                  <h1>Sign Up for Free</h1>	
+                    <div className = "top-row">
+			          <Field
+			            label = "First Name"
+			            name = "First Name"
+			            component = {this.renderField}
+			            type = "text"
+
+			          />
+			          <Field
+			            label = "Last Name"
+			            name  = "Last Name"
+			            component = {this.renderField}
+			            type = "text"
+			           />
+			        </div>    
 		          <Field
 		            label = "Email"
-		            name = "email"
+		            name  = "Email"
 		            component = {this.renderField}
 		            type = "text"
-
-		          />
+		           />
 		          <Field
 		            label = "Password"
-		            name  = "password"
+		            name  = "Password"
 		            component = {this.renderField}
 		            type = "password"
-		           />
+		           /> 
+
 		      </div>    
-		           <button className="button button-block" >Log In</button>
+		          <button type="submit" className="button button-block">Get Started</button>
 	           </form>
            </div>
 
@@ -76,7 +92,7 @@ function mapStateToProps({sessions}) {
 }
 
 export default reduxForm({
-  form: 'simple' // a unique identifier for this form
+  form: 'signup' // a unique identifier for this form
 })(
-connect(mapStateToProps,{fetchSessions})(SessionsNew)
+connect(mapStateToProps,{fetchSessions})(SessionsNewUser)
 );

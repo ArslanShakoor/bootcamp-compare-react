@@ -15,6 +15,7 @@ import CampsNew from './components/camps_new';
 import CampsShow from './components/camps_show';
 import CampsEdit from './components/camps_edit';
 import SessionsNew from './components/sessions/sessions_new';
+import SessionsNewUser from './components/sessions/sessions_new_user';
 import Header from "./components/header"
 
  
@@ -45,6 +46,7 @@ ReactDOM.render(
          <Route path ="/camps/show/:id" component={CampsShow}/>
          <Route path ="/camps/edit/:id" component={CampsNew}/>
          <Route path ="/login" component={SessionsNew}/>
+         <Route path ="/Signup" component={SessionsNewUser}/>
 	       <Route path ="/" component={CampsIndex}/>
          }
           
