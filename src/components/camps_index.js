@@ -7,42 +7,35 @@ import { Link } from "react-router-dom"
 
 class CampsIndex extends Component{
 
-	 
-
 	componentDidMount(){
-		 
 	  this.props.fetchCamps();
 	}
 
 	renderPosts(){
 		return _.map(this.props.camps, camp=>{ 
-		return(	
-
-			<li className = "list-group-item" key = { camp.id }> 
-				<Link to = {`camps/show/${camp.id}`}>
-				{camp.name}
-				</Link>
-		 	</li>
-		 	 
-		); 	
-	}); 
+  		return(	
+        <li className = "list-group-item" key = { camp.id }> 
+  				<Link to = {`camps/show/${camp.id}`}>
+  				{camp.name}
+  				</Link>
+  		 	</li> 	 
+  		); 	
+	  }); 
 	} 
 
 	render(){
 		return(
-			 
-           <div>
-           {this.renderPosts()}
-           </div>
-        );
+		  <div>
+      {this.renderPosts()}
+      </div>
+    );
 	}
 } 
 
 const mapStateToProps = (state) => {
-    return {
-        camps: state.camps
-         
-    };
+  return {
+    camps: state.camps    
+  };
 };
 
 export default connect(mapStateToProps, { fetchCamps }) (CampsIndex);  

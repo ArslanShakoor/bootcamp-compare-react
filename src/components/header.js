@@ -31,17 +31,14 @@ render() {
         </NavDropdown>
       </Nav>
 
-        <div class="row">
+      <div class="row">
         <Nav pullRight>
           <NavItem eventKey={1} href="#">Link Right</NavItem>
           <LinkContainer to="/login">
-          <NavItem eventKey={2} >Login</NavItem>
+            <NavItem eventKey={2} >Login</NavItem>
           </LinkContainer>
-           
-
         </Nav>
-        </div>
-      
+      </div>
     </Navbar.Collapse>
 </Navbar>
 );

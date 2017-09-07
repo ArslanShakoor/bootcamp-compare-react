@@ -5,30 +5,22 @@ import { connect } from 'react-redux';
 
 class CampsNew extends Component{
 
-    componentDidMount(){
-
-	const { id } = this.props.match.params;	 
-        if (id) {
-          this.props.fetchCamp(id);		
-		  this.handleInitialize();
-	    }
+  componentDidMount(){
+	  const { id } = this.props.match.params;	 
+      if (id) {
+        this.props.fetchCamp(id);	
+        console.log(id);	
+        this.handleInitialize();
+    }
 	}
 		
- 
-	
 
 	handleInitialize() {
-	    
-		 
-             
-       const initData = {
+	  const initData = {
       "name":this.props.camp.name,
       "fees":this.props.camp.fees,
       "course":this.props.camp.course,
       "website":this.props.camp.website,
-
-     
-       
     };
  
     this.props.initialize(initData);
@@ -37,69 +29,59 @@ class CampsNew extends Component{
 	renderField(field){
 		const {meta:{touched, error}} = field;
 		return(
-          <div className="form-group">
-            <label>{field.label}</label>
-            <input
-              className="form-control"
-              {...field.input}
-
-            />  
-            <div className="text-help">
-
-            {touched ? error : ""}
-           </div> 
-          </div>
-
+      <div className="form-group">
+        <label>{field.label}</label>
+        <input
+          className="form-control"
+          {...field.input}
+        />  
+        <div className="text-help">
+          {touched ? error : ""}
+        </div> 
+      </div>
 		);
-
 	}
 	onSubmit(values){
 		console.log(values); 
 		const { id } = this.props.match.params;
 		if(id){
-		this.props.updateCamp(id, values)		
+		  this.props.updateCamp(id, values)		
 		}
-	    else{
-        this.props.createCamps(values); 
-	    }
-
-
-	}
+	  else{
+      this.props.createCamps(values); 
+	  }
+  }
 
 	render(){
 		const {handleSubmit} = this.props
 		return(
 		      
-        <form onSubmit = {handleSubmit(this.onSubmit.bind(this))}>
+      <form onSubmit = {handleSubmit(this.onSubmit.bind(this))}>
 
+        <Field
+          label = "Name"
+          name = "name"
+          component = {this.renderField}
+        />
+        <Field
+          label = "Fees"
+          name  = "fees"
+          component = {this.renderField}
+         /> 
           <Field
-            label = "Name"
-            name = "name"
-            component = {this.renderField}
-
-          />
+          label = "Course"
+          name  = "course"
+          component = {this.renderField}
+         />
           <Field
-            label = "Fees"
-            name  = "fees"
-            component = {this.renderField}
-           /> 
-            <Field
-            label = "Course"
-            name  = "course"
-            component = {this.renderField}
-           />
-            <Field
-            label = "Website"
-            name  = "website"
-            component = {this.renderField}
-           />
-           <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
-            
+          label = "Website"
+          name  = "website"
+          component = {this.renderField}
+         />
+         <button type="submit" className="btn btn-primary">Submit</button>
+      </form>        
 		);
 	}
-
-	 
 } 
 
 function validate(values) {
@@ -114,11 +96,11 @@ function validate(values) {
 	}
 
 	if(!values.course){
-		errors.course= "enter the course"
+		errors.course= "enter the course";
 	}
 
 	if(!values.website){
-		errors.website = "enter the website"
+		errors.website = "enter the website";
 	}
 
 	return errors;	

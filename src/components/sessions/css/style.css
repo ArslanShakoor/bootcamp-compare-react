@@ -21,6 +21,7 @@ a:hover {
   color: #179b77;
 }
 
+
 .form {
   background: rgba(19, 35, 47, 0.9);
   padding: 40px;
@@ -117,6 +118,10 @@ input, textarea {
 input:focus, textarea:focus {
   outline: 0;
   border-color: #1ab188;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow:  0 0 0 30px rgba(19, 35, 47, 0.92) inset;
+    -webkit-text-fill-color: #ffffff;
 }
 
 textarea {

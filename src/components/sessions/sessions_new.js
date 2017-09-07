@@ -7,70 +7,68 @@ import './css/style.css';
  
  
 
-
 class SessionsNew extends Component{
-    renderField(field){
-    	const {meta:{touched, error}} = field;
-    	return(
-          <div className = "field-wrap">
-          <label>
-            {field.label}<span className="req">*</span>
-          </label> 
-            <input 
-              
-              {...field.input}
-              type = {field.type}
-              
-
-            />
-            <div className="text-help">
-
-            {touched ? error : ""}
-           </div>
-           
-          </div>
-
-        );
-    }
+  renderField(field){
+  	const {meta:{touched, error}} = field;
+  	return(
+      <div className = "field-wrap">
+        <label>
+          {field.label}<span className="req"/> 
+        </label> 
+        if(field.type == "text"){
+        <input 
+          {...field.input}
+          type = {field.type}
+        />
+        }
+        else{
+          <ReactStars
+            count={5}
+            size={24}
+            color2={'#ffd700'} 
+          />
+        }
+        <div className="text-help">
+          {touched ? error : ""}
+        </div>
+      </div>
+    );
+  }
 
 	onSubmit(values){
-	   console.log	
-       this.props.fetchSessions(values)
+	  console.log	
+    this.props.fetchSessions(values)
 	}
 	render(){
-        const {handleSubmit} = this.props;
+    const {handleSubmit} = this.props;
         
-		return(
-		    	 
-		  
-		   <div className="form">
+		return( 
+		  <div className="form">
       
-		      <ul className="tab-group">
-		        <li className="tab active"><a href="#login">Log In</a></li>
-		        <li className="tab"><Link to ="/signup">Sign Up</Link></li>
-		      </ul>	
+	      <ul className="tab-group">
+	        <li className="tab active"><a href="#login">Log In</a></li>
+	        <li className="tab"><Link to ="/signup">Sign Up</Link></li>
+	      </ul>	
 
-			  <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-			  <div id="login">   
-                  <h1>Welcome Back!</h1>	
-		          <Field
-		            label = "Email"
-		            name = "email"
-		            component = {this.renderField}
-		            type = "text"
-
-		          />
-		          <Field
-		            label = "Password"
-		            name  = "password"
-		            component = {this.renderField}
-		            type = "password"
-		           />
-		      </div>    
-		           <button className="button button-block" >Log In</button>
-	           </form>
-           </div>
-
+		    <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+		      <div id="login">   
+            <h1>Welcome Back!</h1>	
+	          <Field
+	            label = "Email"
+	            name = "email"
+	            component = {this.renderField}
+	            type = "text"
+            />
+	          <Field
+	            label = "Password"
+	            name  = "password"
+	            component = {this.renderField}
+	            type = "password"
+	          />
+	        </div>    
+	          <button className="button button-block" >Log In</button>
+        </form>
+      </div>
 		);
 	}
 }
@@ -84,11 +82,9 @@ function validate(values) {
 	if(!values.password){
 		errors.password="Enter the Password";
 	}
-
-	 
-
 	return errors;	
 }
+
 function mapStateToProps({sessions}) {
   return { sessions };
 }
