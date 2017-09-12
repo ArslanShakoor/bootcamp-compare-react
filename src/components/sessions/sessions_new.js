@@ -7,6 +7,7 @@ import './css/style.css';
  
  
 
+
 class SessionsNew extends Component{
   renderField(field){
   	const {meta:{touched, error}} = field;
@@ -15,19 +16,10 @@ class SessionsNew extends Component{
         <label>
           {field.label}<span className="req"/> 
         </label> 
-        if(field.type == "text"){
         <input 
           {...field.input}
           type = {field.type}
         />
-        }
-        else{
-          <ReactStars
-            count={5}
-            size={24}
-            color2={'#ffd700'} 
-          />
-        }
         <div className="text-help">
           {touched ? error : ""}
         </div>

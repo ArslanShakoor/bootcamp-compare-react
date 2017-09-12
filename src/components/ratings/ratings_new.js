@@ -1,67 +1,145 @@
-import ReactStars from 'react-stars'
 import React, {Component} from 'react';
-import { Field, reduxForm, initialize} from 'redux-form'; 
+import ReactStars from 'react-stars'
+import { createRatings} from '../../actions/ratings';
+import { Field, reduxForm, initialize, change} from 'redux-form'; 
 import { connect } from 'react-redux';
-
+import "./css/rating_style.css"
 
 class RatingsNew extends Component{
-	 
   
-  renderField(field){
-    
-    const {meta:{touched, error}} = field;
-    if (field.type =="text"){
-     return(
-      <div className = "form-group">
-        <label>{field.label}</label>
 
-        <input
-          className = "form-control"
-          {...field.input}
-        />
-         
-        <div className = "text-help">
+  
+  
+  constructor(props) {
+    super(props);
+    this.state = { overall_review: 1 ,
+      curriculum_review: 1,
+      job_assistance_review: 1,
+      instructor_review: 1
+    };
+  }
+  
+  onChangeRating = (name, value) => {
+    this.props.change(name, value);
+    this.setState({name: value});
+    console.log(this.state.name1);
+    console.log(name);   
+  }
+   
+  onChangeCamp = (e) => {
+    this.props.change("bootcamp", e.target.value);
+    this.setState({"bootcamp": e.target.value});
+    console.log(this.state.bootcamp);
+    console.log("bootcamp");    
+  } 
+
+  onChangeTextArea = (e) => {
+    this.props.change("description",e.target.value);
+    this.setState({"description": e.target.value});
+    console.log(this.state.textarea);
+    console.log("textarea");    
+  } 
+
+
+  renderField =(field) => { 
+    let name = field.input.name;
+     
+    const {meta:{touched, error}} = field;
+
+
+    if (field.type =="text" || field.type == "checkbox"){
+      return(
+        <div className =  "field-wrap">
+          <label>{field.label}</label>
+          <input
+            {...field.input}
+            type = {field.type}
+          />   
+          <div className = "text-help">
           {touched ? error : "" }
+          </div>  
         </div>  
-      </div>  
-    );
+      );
+    }
+     else if (field.type == "select"){
+      return(
+        <div className = "field-wrap">
+          <label>{field.label}</label>
+          <div> 
+            <select 
+              onChange={(value) => {
+                 this.onChangeCamp(value)
+              }}>
+              <option />
+              <option value="10">Flatiron</option>
+              <option value="10">Bloc School</option>
+              <option value="10">Sabio</option>
+            </select>
+          </div>
+          <div className = "text-help">
+            {touched ? error : "" }
+          </div>  
+        </div>  
+      );
+    }
+    else if (field.type == "textarea"){
+      return(
+        <div className = "field-wrap">
+          <label>{field.label}</label> 
+            
+          <textarea
+            onChange = { (value) => this.onChangeTextArea(value)}
+            rows="8"
+            {...field.textarea} 
+          />
+          <div className = "text-help">
+            {touched ? error : "" }
+          </div>  
+        </div>  
+      );
     }
     else{
-    return(
-      <div className = "form-group">
-        <label>{field.label}</label>
-        <input
-          className = "form-control"
-          {...field.input}
-          type = {field.type}
-        />
-
-         <ReactStars
-          count={5}
-          size={24}
-          color2={'#ffd700'} />
-           
-
-        <div className = "text-help">
-          {touched ? error : "" }
+      return(
+        <div className = "form-group">
+          <label>{field.label}</label>  
+          <ReactStars
+            count={5}
+            size={20}
+            onChange={(value) => {
+              this.onChangeRating(name, value);
+            }}
+            value={this.state.name}    
+          />               
+          <div className = "text-help">
+            {touched ? error : "" }
+          </div>  
         </div>  
-      </div>  
-    );
+      );
     }
   }
-
-
-
-  onSubmit(values){
-    console.log(values)
-  }
+  
+  onSubmit = (values) => {
+    this.props.createRatings(values);         
+  } 
+   
   render(){
      
-     const  {handleSubmit } = this.props
+    const  {handleSubmit} = this.props
 		return(
- 
+      <div className="form">
       <form  onSubmit= {handleSubmit(this.onSubmit.bind(this))}>
+        <div className = "row">
+          <div className= "col-md-12">
+            <Field name="bootcamp"
+              type = "select" 
+              label = "Bootcamp"
+              name = "bootcamp"
+              component={this.renderField}>
+            </Field>
+          </div>
+        </div>
         <div className= "row">
+         
         <div className= "col-md-4">
         <Field 
           label = "Student Name"
@@ -78,14 +156,16 @@ class RatingsNew extends Component{
           component = {this.renderField}
         />
         </div>
-        <div className= "col-md-4">
+         
+        <div className= "col-md-2">
         <Field 
           label = "Anonymous"
           name  = "anonymous"
-          type = "text"
+          type = "checkbox"
           component = {this.renderField}
         />
         </div>
+         
         </div>
 
         <Field 
@@ -97,7 +177,7 @@ class RatingsNew extends Component{
         <Field 
           label = "Description"
           name  = "description"
-          type = "text"
+          type = "textarea"
           component = {this.renderField}
         />
         <div className = "row">
@@ -105,15 +185,13 @@ class RatingsNew extends Component{
         <Field 
           label = "Overall"
           name  = "overall_review"
-          type = "hidden"
           component = {this.renderField}
         />
         </div>
         <div className = "col-sm-3">
         <Field 
-          label = "Curriculum "
+          label = "Curriculum"
           name  = "curriculum_review"
-          type = "hidden"
           component = {this.renderField}
         />
         </div>
@@ -121,7 +199,6 @@ class RatingsNew extends Component{
         <Field 
           label = "Instructor"
           name  = "instructor_review"
-          type = "hidden"
           component = {this.renderField}
         />
         </div>
@@ -129,13 +206,13 @@ class RatingsNew extends Component{
         <Field 
           label = "Job Assistance"
           name  = "job_assistance_review"
-          type = "hidden"
           component = {this.renderField}
         />
         </div>
         </div>
-        <button type = "submit" className = "btn btn-primary">Submit</button>
+        <button type = "submit"  className = "btn btn-primary">Submit</button>
       </form>
+      </div>
        
     );
 	};
@@ -144,6 +221,9 @@ function validate(values){
   const errors = {}
   if(!values.student_name){
     errors.student_name = "Enter the Name"
+  }
+   if(!values.bootcamp){
+    errors.bootcamp = "Select the Bootcamp"
   }
   if(!values.student_email){
     errors.student_email = "Enter the Email"
@@ -154,25 +234,27 @@ function validate(values){
   if(!values.description){
     errors.description = "Enter the Description"
   }
-  if(!values.overall_review){
-    errors.overall_review = "Share Overall Review"
+   if(!values.overall_review){
+    errors.overall_review = "Enter your Overall Rating"
   }
-  if(!values.curriculum_review){
-    errors.curriculum_review = "Share Curriculum Review"
+   if(!values.curriculum_review){
+    errors.curriculum_review = "Enter the Curriculum Rating"
   }
-  if(!values.curriculum_review){
-    errors.instructor_review = "Share Instructor Review"
+   if(!values.instructor_review){
+    errors.instructor_review = "Enter the Instructor Rating"
   }
-  if(!values.job_assistance_review){
-    errors.job_assistance_review = "Share Job Assistance Review"
+   if(!values.job_assistance_review){
+    errors.job_assistance_review = "Enter the Job Assistance Rating"
   }
   return errors
 }
+
+ 
 
 export default reduxForm({
   validate,
   form: 'RatingForm'
 })(
-connect(null,{})(RatingsNew)
+connect(null,{createRatings})(RatingsNew)
 );
 
