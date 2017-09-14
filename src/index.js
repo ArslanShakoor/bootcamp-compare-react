@@ -14,7 +14,7 @@ import CampsIndex from './components/camps_index';
 import CampsNew from './components/camps_new';
 import CampsShow from './components/camps_show';
 import CampsEdit from './components/camps_edit';
- 
+
  
 import Header from "./components/header";
 import SessionsNew from './components/sessions/sessions_new';
@@ -23,6 +23,9 @@ import SessionsDestroy from './components/sessions/sessions_destroy';
 import SessionsConfirmation from './components/sessions/sessions_confirmation';
 
 import RatingsNew from './components/ratings/ratings_new';
+
+import FrontIndex from './components/front/front_index';
+
  
 
 const store = createStore(
@@ -46,18 +49,19 @@ ReactDOM.render(
    <div>
       <div><Header /></div>
 	    <Switch>
+         
+         <Route path ='/camps/index' component = {CampsIndex} />
          <Route path ='/ratings/new' component = {RatingsNew}/>
          <Route path ='/camps/new' component = {CampsNew}/>
          <Route path ="/camps/show/:id" component = {CampsShow}/>
          <Route path ="/camps/edit/:id" component = {CampsNew}/>
          <Route path ="/login" component = {SessionsNew}/>
          <Route path ="/Signup" component = {SessionsNewUser}/>
-         <Route path ="/" component = {CampsIndex}/>
-          
-         }
-          
+         <Route path ="/" component = {FrontIndex}/>
+         }/>    
 	    </Switch>
    </div>
    </BrowserRouter>
    </Provider>
-  , document.querySelector('.container'));
+  , document.querySelector('.container')
+);

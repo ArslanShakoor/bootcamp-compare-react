@@ -16,7 +16,7 @@ class CampsIndex extends Component{
   		return(	
         <li className = "list-group-item" key = { camp.id }> 
   				<Link to = {`camps/show/${camp.id}`}>
-  				{camp.name}
+  				  {camp.name}
   				</Link>
   		 	</li> 	 
   		); 	
@@ -38,4 +38,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchCamps }) (CampsIndex);  
+export default connect(mapStateToProps, { fetchCamps }) (CampsIndex);

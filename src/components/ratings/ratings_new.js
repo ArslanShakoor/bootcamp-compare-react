@@ -27,10 +27,10 @@ class RatingsNew extends Component{
   }
    
   onChangeCamp = (e) => {
-    this.props.change("bootcamp", e.target.value);
-    this.setState({"bootcamp": e.target.value});
-    console.log(this.state.bootcamp);
-    console.log("bootcamp");    
+    this.props.change("camp_id", e.target.value);
+    this.setState({"camp_id": e.target.value});
+    console.log(this.state.camp_id);
+    console.log("camp_id");    
   } 
 
   onChangeTextArea = (e) => {
@@ -71,9 +71,11 @@ class RatingsNew extends Component{
                  this.onChangeCamp(value)
               }}>
               <option />
-              <option value="10">Flatiron</option>
-              <option value="10">Bloc School</option>
-              <option value="10">Sabio</option>
+              <option value="20">Flatiron</option>
+              <option value="24">Bloc</option>
+              <option value="23">Sabio</option>
+              <option value="21">Hack Reactor</option>
+
             </select>
           </div>
           <div className = "text-help">
@@ -130,10 +132,10 @@ class RatingsNew extends Component{
       <form  onSubmit= {handleSubmit(this.onSubmit.bind(this))}>
         <div className = "row">
           <div className= "col-md-12">
-            <Field name="bootcamp"
+            <Field 
               type = "select" 
               label = "Bootcamp"
-              name = "bootcamp"
+              name = "camp_id"
               component={this.renderField}>
             </Field>
           </div>
@@ -222,8 +224,8 @@ function validate(values){
   if(!values.student_name){
     errors.student_name = "Enter the Name"
   }
-   if(!values.bootcamp){
-    errors.bootcamp = "Select the Bootcamp"
+   if(!values.camp_id){
+    errors.camp_id = "Select the Bootcamp"
   }
   if(!values.student_email){
     errors.student_email = "Enter the Email"
