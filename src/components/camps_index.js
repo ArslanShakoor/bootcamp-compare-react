@@ -26,7 +26,7 @@ class CampsIndex extends Component{
 	render(){
 		return(
 		  <div>
-      {this.renderPosts()}
+        {this.renderPosts()}
       </div>
     );
 	}

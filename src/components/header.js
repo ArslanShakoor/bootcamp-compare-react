@@ -13,9 +13,11 @@ render() {
   const appNavbar = (
   <Navbar inverse fluid collapseOnSelect>
     <Navbar.Header>
+      <LinkContainer to="/">  
         <Navbar.Brand>
-          <a href="#">CODE SCHOOL</a>
+          CODE SCHOOL
         </Navbar.Brand>
+      </LinkContainer>
         <Navbar.Toggle />
     </Navbar.Header>
     <Navbar.Collapse>
@@ -33,7 +35,9 @@ render() {
 
       <div class="row">
         <Nav pullRight>
-          <NavItem eventKey={1} href="#">Link Right</NavItem>
+          <LinkContainer to="/ratings/new">
+            <NavItem eventKey={1} >Submit A Review</NavItem>
+          </LinkContainer>
           <LinkContainer to="/login">
             <NavItem eventKey={2} >Login</NavItem>
           </LinkContainer>

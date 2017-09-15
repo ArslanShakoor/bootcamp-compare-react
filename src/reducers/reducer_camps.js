@@ -10,8 +10,11 @@ export default function (state = {}, action) {
 		  console.log(action.payload.data)
 		  return _.mapKeys(action.payload.data, 'id');
 		case FETCH_CAMP:
+		   console.log("fetch a Camp")
 		   return {...state, [action.payload.data.id]: action.payload.data}
+			 console.log("action.payload.data")
 		default:
+
 		  console.log('default2x');
 		  return state;
 	}
