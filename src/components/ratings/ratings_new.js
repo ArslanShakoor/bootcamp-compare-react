@@ -7,9 +7,6 @@ import "./css/rating_style.css"
 
 class RatingsNew extends Component{
 
-
-
-
   constructor(props) {
     super(props);
     this.state = { overall_review: 1 ,
@@ -47,7 +44,7 @@ class RatingsNew extends Component{
     if (field.type =="text" || field.type == "checkbox"){
       return(
         <div className =  "field-wrap">
-          <label>{field.label}</label>
+          <label>{field.label} <span className={field.req}></span></label>
           <input
             {...field.input}
             type = {field.type}
@@ -61,7 +58,7 @@ class RatingsNew extends Component{
      else if (field.type == "select"){
       return(
         <div className = "field-wrap">
-          <label>{field.label}</label>
+          <label>{field.label} <span className={field.req}></span></label>
           <div>
             <select
               onChange={(value) => {
@@ -84,7 +81,7 @@ class RatingsNew extends Component{
     else if (field.type == "textarea"){
       return(
         <div className = "field-wrap">
-          <label>{field.label}</label>
+          <label>{field.label} <span className={field.req}></span></label>
 
           <textarea
             onChange = { (value) => this.onChangeTextArea(value)}
@@ -100,7 +97,7 @@ class RatingsNew extends Component{
     else{
       return(
         <div className = "form-group">
-          <label>{field.label}</label>
+          <label>{field.label} <span className={field.req}></span></label>
           <ReactStars
             count={5}
             size={20}
@@ -133,6 +130,7 @@ class RatingsNew extends Component{
               type = "select"
               label = "Bootcamp"
               name = "camp_id"
+              req = "req"
               component={this.renderField}>
             </Field>
           </div>
@@ -142,16 +140,18 @@ class RatingsNew extends Component{
         <div className= "col-md-4">
         <Field
           label = "Student Name"
-          name = "student_name"
+          name = "name"
           type = "text"
+          req = "req"
           component = {this.renderField}
         />
         </div>
         <div className= "col-md-4">
         <Field
           label = "Email"
-          name =  "student_email"
+          name =  "email"
           type = "text"
+          req = "req"
           component = {this.renderField}
         />
         </div>
@@ -167,16 +167,31 @@ class RatingsNew extends Component{
 
         </div>
 
-        <Field
-          label = "Title"
-          name  = "title"
-          type = "text"
-          component = {this.renderField}
-        />
+        <div className="row">
+        <div className= "col-md-6">
+          <Field
+            label = "Occupation"
+            name  = "occupation"
+            type = "text"
+            req = "req"
+            component = {this.renderField}
+          />
+        </div>
+        <div className= "col-md-6">
+          <Field
+            label = "Title"
+            name  = "title"
+            type = "text"
+            req = "req"
+            component = {this.renderField}
+          />
+        </div>
+        </div>
         <Field
           label = "Description"
           name  = "description"
           type = "textarea"
+          req = "req"
           component = {this.renderField}
         />
         <div className = "row">
@@ -184,6 +199,7 @@ class RatingsNew extends Component{
         <Field
           label = "Overall"
           name  = "overall_review"
+          req = "req"
           component = {this.renderField}
         />
         </div>
@@ -191,6 +207,7 @@ class RatingsNew extends Component{
         <Field
           label = "Curriculum"
           name  = "curriculum_review"
+          req = "req"
           component = {this.renderField}
         />
         </div>
@@ -198,6 +215,7 @@ class RatingsNew extends Component{
         <Field
           label = "Instructor"
           name  = "instructor_review"
+          req = "req"
           component = {this.renderField}
         />
         </div>
@@ -205,6 +223,7 @@ class RatingsNew extends Component{
         <Field
           label = "Job Assistance"
           name  = "job_assistance_review"
+          req = "req"
           component = {this.renderField}
         />
         </div>
@@ -218,17 +237,20 @@ class RatingsNew extends Component{
 }
 function validate(values){
   const errors = {}
-  if(!values.student_name){
-    errors.student_name = "Enter the Name"
+  if(!values.name){
+    errors.name = "Enter the Name"
   }
-   if(!values.camp_id){
+  if(!values.camp_id){
     errors.camp_id = "Select the Bootcamp"
   }
-  if(!values.student_email){
-    errors.student_email = "Enter the Email"
+  if(!values.email){
+    errors.email = "Enter the Email"
   }
   if(!values.title){
     errors.title = "Enter the Title"
+  }
+  if(!values.occupation){
+    errors.occupation = "Enter the occupation"
   }
   if(!values.description){
     errors.description = "Enter the Description"

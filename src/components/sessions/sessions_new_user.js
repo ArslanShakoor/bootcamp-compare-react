@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import './css/style.css';
- 
+
 class SessionsNewUser extends Component{
   renderField(field){
   	const {meta:{touched,error}}= field;
@@ -13,8 +13,8 @@ class SessionsNewUser extends Component{
       <div className = "field-wrap">
         <label>
           {field.label}<span className="req"/>*
-        </label> 
-        <input 
+        </label>
+        <input
           {...field.input}
           type = {field.type}
         />
@@ -26,7 +26,7 @@ class SessionsNewUser extends Component{
   }
 
 	onSubmit(values){
-	  console.log	
+	  console.log
     this.props.createUsers(values)
 	}
 	render(){
@@ -36,15 +36,15 @@ class SessionsNewUser extends Component{
     }
 		return(
 		   <div className="form">
-    
+
 	      <ul className="tab-group">
 	        <li className="tab"><Link to="/login">Log In</Link></li>
 	        <li className="tab active"><a href="#signup">Sign Up</a></li>
-	      </ul>	
+	      </ul>
 
 		    <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-		      <div id="signup">   
-            <h1>Sign Up for Free</h1>	
+		      <div id="signup">
+            <h1>Sign Up for Free</h1>
             <div className = "top-row">
   	          <Field
   	            label = "First Name"
@@ -58,7 +58,7 @@ class SessionsNewUser extends Component{
   	            component = {this.renderField}
   	            type = "text"
   	          />
-		        </div>    
+		        </div>
 	          <Field
 	            label = "Email"
 	            name  = "email"
@@ -70,8 +70,8 @@ class SessionsNewUser extends Component{
 	            name  = "password"
 	            component = {this.renderField}
 	            type = "password"
-	          /> 
-          </div>    
+	          />
+          </div>
 	          <button type="submit" className="button button-block">Get Started</button>
         </form>
      </div>
@@ -84,11 +84,11 @@ function validate(values) {
 	if(!values.first_name){
 		errors.first_name="Enter the First Name";
 	}
-	
+
 	if(!values.last_name){
 		errors.last_name="Enter the Last Name";
 	}
-    
+
     if(!values.email){
 		errors.email="Enter the Email";
 	}
@@ -96,7 +96,7 @@ function validate(values) {
 	if(!values.password){
 		errors.password="Enter the Password";
 	}
-	return errors;	
+	return errors;
 }
 function mapStateToProps({sessions}) {
   return { sessions };

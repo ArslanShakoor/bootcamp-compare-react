@@ -76,15 +76,16 @@ h1 {
 }
 
 label {
-   
+
   left: 13px;
   color: rgba(255, 255, 255, 0.5);
-  
+
   font-size: 22px;
 }
 label .req {
   margin: 2px;
-  color: #1ab188;
+  color: white;
+
 }
 
 label.active {

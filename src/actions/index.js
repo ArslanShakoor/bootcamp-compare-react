@@ -1,16 +1,14 @@
 import axios from 'axios';
 export const FETCH_CAMPS = 'fetch_camps';
-export const FETCH_CAMP = 'fetch_camp'; 
+export const FETCH_CAMP = 'fetch_camp';
 export const CREATE_CAMPS = 'create_camps';
 export const DELETE_CAMP = 'delete_camp';
 export const UPDATE_CAMP = 'update_camp';
 const ROOT_URL = 'http://localhost:3000/';
- 
+
 
 export function fetchCamps(){
-
-	 
-    const request = axios.get(`${ROOT_URL}camps`);
+  const request = axios.get(`${ROOT_URL}camps`);
 	return{
 		type: FETCH_CAMPS,
 		payload: request
@@ -38,7 +36,7 @@ export function deleteCamp(value){
 	return{
 		type: DELETE_CAMP,
 		paylod: request
-	}	
+	}
 }
 
 export function updateCamp(id,values){
@@ -46,6 +44,5 @@ export function updateCamp(id,values){
 	return{
 		type: UPDATE_CAMP,
 		paylod: request
-	}	
+	}
 }
-

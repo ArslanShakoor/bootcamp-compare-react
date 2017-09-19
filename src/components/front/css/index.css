@@ -21,6 +21,7 @@ header.masthead > .overlay {
 .display-1 {
   font-size: 6rem;
   font-weight: 300;
+  color:300;
 }
 
 .display-4 {
@@ -50,6 +51,7 @@ header.masthead > .overlay {
 	width: 30px;
 	height: 30px;
 	float: left;
+
 }
 .stack{
 	padding-top: 4px;

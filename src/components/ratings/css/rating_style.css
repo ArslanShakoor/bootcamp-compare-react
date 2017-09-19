@@ -79,15 +79,17 @@ h1 {
 }
 
 label {
-   
+
   left: 13px;
   color: rgba(255, 255, 255, 0.5);
-  
+
   font-size: 22px;
 }
 label .req {
-  margin: 2px;
   color: #1ab188;
+}
+label .req:after {
+  content: "*";
 }
 
 label.active {
@@ -119,7 +121,7 @@ input, textarea , select{
   transition: border-color .25s ease, box-shadow .25s ease;
 }
 
- 
+
 
 input:focus, textarea:focus {
   outline: 0;
@@ -144,7 +146,7 @@ height: 33px;
 border-width: 0;
 transition: all .3s linear;
 }
- 
+
 input[type="checkbox"]:focus{
   outline: 0;
   border-color: #1ab188;

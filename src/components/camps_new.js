@@ -6,14 +6,14 @@ import { connect } from 'react-redux';
 class CampsNew extends Component{
 
   componentDidMount(){
-	  const { id } = this.props.match.params;	 
+	  const { id } = this.props.match.params;
       if (id) {
-        this.props.fetchCamp(id);	
-        console.log(id);	
+        this.props.fetchCamp(id);
+        console.log(id);
         this.handleInitialize();
     }
 	}
-		
+
 
 	handleInitialize() {
 	  const initData = {
@@ -22,67 +22,94 @@ class CampsNew extends Component{
       "course":this.props.camp.course,
       "website":this.props.camp.website,
     };
- 
+
     this.props.initialize(initData);
   }
 
 	renderField(field){
 		const {meta:{touched, error}} = field;
 		return(
-      <div className="form-group">
-        <label>{field.label}</label>
+      <div className = "field-wrap">
+        <label>
+          {field.label}<span className={field.req}></span>      
+        </label>
         <input
-          className="form-control"
           {...field.input}
-        />  
+          type = {field.type}
+        />
         <div className="text-help">
           {touched ? error : ""}
-        </div> 
+        </div>
       </div>
 		);
 	}
 	onSubmit(values){
-		console.log(values); 
+		console.log(values);
 		const { id } = this.props.match.params;
 		if(id){
-		  this.props.updateCamp(id, values)		
+		  this.props.updateCamp(id, values)
 		}
 	  else{
-      this.props.createCamps(values); 
+      this.props.createCamps(values);
 	  }
   }
 
 	render(){
 		const {handleSubmit} = this.props
 		return(
-		      
+      <div className="form">
       <form onSubmit = {handleSubmit(this.onSubmit.bind(this))}>
 
         <Field
           label = "Name"
           name = "name"
+          req = "req"
           component = {this.renderField}
         />
         <Field
           label = "Fees"
           name  = "fees"
+          req = "req"
           component = {this.renderField}
-         /> 
-          <Field
+        />
+        <Field
           label = "Course"
           name  = "course"
+          req = "req"
           component = {this.renderField}
-         />
-          <Field
+        />
+        <Field
           label = "Website"
           name  = "website"
+          req = "req"
           component = {this.renderField}
-         />
+        />
+        <Field
+          label = "Employement Rate"
+          name  = "employment_rate"
+          component = {this.renderField}
+        />
+        <Field
+          label = "Graduation Rate"
+          name  = "graduation_rate"
+          component = {this.renderField}
+        />
+        <Field
+          label = "Facebook"
+          name  = "facebook"
+          component = {this.renderField}
+        />
+        <Field
+          label = "Twitter"
+          name  = "twitter"
+          component = {this.renderField}
+        />
          <button type="submit" className="btn btn-primary">Submit</button>
-      </form>        
+      </form>
+      </div>
 		);
 	}
-} 
+}
 
 function validate(values) {
 	// body...
@@ -90,7 +117,7 @@ function validate(values) {
 	if(!values.name){
 		errors.name="Enter the name";
 	}
-	
+
 	if(!values.fees){
 		errors.fees="Enter the fees";
 	}
@@ -103,7 +130,7 @@ function validate(values) {
 		errors.website = "enter the website";
 	}
 
-	return errors;	
+	return errors;
 }
 
 function mapStateToProps({ camps}, ownProps){
@@ -113,7 +140,7 @@ function mapStateToProps({ camps}, ownProps){
 export default reduxForm({
 	validate,
 	form: 'PostNewCamp'
-	 
+
 })(
 connect(mapStateToProps,{createCamps,fetchCamp,updateCamp})(CampsNew)
 );
