@@ -31,7 +31,7 @@ class CampsNew extends Component{
 		return(
       <div className = "field-wrap">
         <label>
-          {field.label}<span className={field.req}></span>      
+          {field.label}<span className={field.req}></span>
         </label>
         <input
           {...field.input}
