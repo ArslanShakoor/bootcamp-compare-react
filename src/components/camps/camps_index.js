@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
-import { fetchCamps } from '../actions';
+import { fetchCamps } from '../../actions';
 import { Link } from "react-router-dom";
 import ReactStars from 'react-stars';
 
@@ -43,7 +43,7 @@ class CampsIndex extends Component{
 						</div>
 					</div>
   				</Link>
-  		 	
+
   		);
 	  });
 	}

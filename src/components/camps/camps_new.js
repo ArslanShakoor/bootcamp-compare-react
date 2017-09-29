@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Field, reduxForm, initialize} from 'redux-form';
-import { createCamps,fetchCamp,updateCamp } from '../actions';
+import { createCamps,fetchCamp,updateCamp } from '../../actions';
 import { connect } from 'react-redux';
 
 class CampsNew extends Component{
@@ -117,6 +117,9 @@ function validate(values) {
 	if(!values.name){
 		errors.name="Enter the name";
 	}
+  else if(values.name.length < 3){
+    errors.name= "type 3 to 24 characters"
+  }
 
 	if(!values.fees){
 		errors.fees="Enter the fees";

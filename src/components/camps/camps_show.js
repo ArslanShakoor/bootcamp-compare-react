@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import { fetchCamp } from '../actions';
-import { fetchRating } from '../actions/ratings'
-import { deleteCamp } from '../actions';
+import { fetchRating } from '../../actions/ratings'
+import { fetchCamp, deleteCamp } from '../../actions';
 import { connect} from 'react-redux';
 import { Link } from "react-router-dom";
 import ReactStars from 'react-stars';
-import './style.css'
+import './css/style.css'
 
 class CampsShow extends Component{
 
@@ -52,6 +51,19 @@ class CampsShow extends Component{
 			return "N/A"
     }
 	}
+	getWebsite(val){
+		if (val != null){
+			val = `http://${val}`;
+			return(
+				<a href= {val} target="_blank">
+				  <img src = "/src/images/web.png" width = "30" height = "25px" />
+			  </a>
+		  );
+		}
+		else{
+			return "N/A"
+    }
+	}
 	getRating(val){
 		return(
 			<ReactStars
@@ -87,7 +99,7 @@ class CampsShow extends Component{
 				</div>
 				<div className = "pro-value">
 				  <div className="col-sm-6 camp-property">Website:</div>
-					<div className ="col-sm-6 camp-value">{this.getValue(camp.website)}</div>
+					<div className ="col-sm-6 camp-value">{this.getWebsite(camp.website)}</div>
 				</div>
 				<div className = "pro-value">
 				  <div className="col-sm-6 camp-property">Facebook:</div>

@@ -65,11 +65,10 @@ class RatingsNew extends Component{
                  this.onChangeCamp(value)
               }}>
               <option />
-              <option value="20">Flatiron</option>
-              <option value="24">Bloc</option>
-              <option value="23">Sabio</option>
-              <option value="21">Hack Reactor</option>
-              <option value="25">Firehose</option>
+              <option value="2">Flatiron</option>
+              <option value="5">Bloc</option>
+              <option value="3">Hack Reactor</option>
+              <option value="4">Firehose</option>
             </select>
           </div>
           <div className = "text-help">
@@ -115,7 +114,10 @@ class RatingsNew extends Component{
   }
 
   onSubmit = (values) => {
-    this.props.createRatings(values);
+    this.props.createRatings(values, ()=>{
+			//add the call back fundtio
+			this.props.history.push('/');
+		});
   }
 
   render(){
@@ -240,20 +242,42 @@ function validate(values){
   if(!values.name){
     errors.name = "Enter the Name"
   }
+  else if(values.name.length < 3 || values.name.length > 24){
+    errors.name= "Name should between 3 to 24 characters"
+  }
+
   if(!values.camp_id){
     errors.camp_id = "Select the Bootcamp"
   }
+
   if(!values.email){
     errors.email = "Enter the Email"
+  }
+  else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
+    errors.email =  "Enter the valid Email"
+  }
+
+  else if(values.email.length < 10 || values.email.length > 100){
+    errors.email = "Email should between 10 to 100 characters"
   }
   if(!values.title){
     errors.title = "Enter the Title"
   }
+  else if(values.title.length < 10 || values.title.length > 100){
+    errors.title= "Name should between 10 to 100 characters"
+  }
   if(!values.occupation){
     errors.occupation = "Enter the occupation"
   }
+  else if(values.occupation.length < 7 || values.occupation.length > 30){
+    errors.occupation= "Occupation should between 7 to 30 characters"
+  }
   if(!values.description){
     errors.description = "Enter the Description"
+  }
+
+  else if(values.description.length < 50 || values.description.length > 1500){
+    errors.description= "Description should between 50 to 1500 characters"
   }
    if(!values.overall_review){
     errors.overall_review = "Enter your Overall Rating"

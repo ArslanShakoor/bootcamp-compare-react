@@ -12,7 +12,7 @@ class SessionsNewUser extends Component{
   	return(
       <div className = "field-wrap">
         <label>
-          {field.label}<span className="req"/>*
+          {field.label}<span className="req"/>
         </label>
         <input
           {...field.input}
@@ -26,13 +26,13 @@ class SessionsNewUser extends Component{
   }
 
 	onSubmit(values){
-	  console.log
     this.props.createUsers(values)
 	}
 	render(){
     const {handleSubmit, sessions} = this.props;
     if(sessions){
-     	console.log(sessions)
+      console.log("we have session");
+     	console.log(sessions);
     }
 		return(
 		   <div className="form">
@@ -84,18 +84,34 @@ function validate(values) {
 	if(!values.first_name){
 		errors.first_name="Enter the First Name";
 	}
+  else if(values.first_name.length < 3 || values.first_name.length > 12 ){
+    errors.first_name= "First Name should between 3 to 12 character"
+  }
 
 	if(!values.last_name){
 		errors.last_name="Enter the Last Name";
 	}
+  else if(values.last_name.length < 3 || values.last_name.length > 12 ){
+    errors.last_name= "Last Name should between 3 to 12 character"
+  }
 
-    if(!values.email){
+  if(!values.email){
 		errors.email="Enter the Email";
 	}
+  else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
+    errors.email =  "Enter the valid Email"
+  }
+  else if(values.email.length < 10 || values.email.length > 100 ){
+    errors.email= "Email should between 10 to 100 character"
+  }
+
 
 	if(!values.password){
 		errors.password="Enter the Password";
 	}
+  else if(values.password.length < 5 || values.password.length > 50 ){
+    errors.password= "Password should between 5 to 50 character"
+  }
 	return errors;
 }
 function mapStateToProps({sessions}) {

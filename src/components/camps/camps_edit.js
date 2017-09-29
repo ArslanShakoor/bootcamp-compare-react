@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Field, reduxForm, formValues, initialize} from 'redux-form';
-import { updateCamps,fetchCamp } from '../actions';
+import { updateCamps,fetchCamp } from '../../actions';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ class CampsEdit extends Component{
 		const { id } = this.props.params.id;
 		console.log(id);
 		this.handleInitialize();
-	} 
+	}
 
 
 	handleInitialize() {
@@ -20,12 +20,12 @@ class CampsEdit extends Component{
       "course":this.props.camp.course,
       "website":this.props.camp.website
     };
- 
+
     this.props.initialize(initData);
   }
-   
+
 	renderField(field){
-		
+
 		const {meta:{touched, error}} = field;
 		return(
       <div className="form-group">
@@ -33,10 +33,10 @@ class CampsEdit extends Component{
         <input
           className="form-control"
           {...field.input}
-        />  
+        />
         <div className="text-help">
           {touched ? error : ""}
-        </div> 
+        </div>
       </div>
 		);
 	}
@@ -47,9 +47,9 @@ class CampsEdit extends Component{
 
 	render(){
 	  const {handleSubmit, camp} = this.props;
-	  console.log(camp.name) 
+	  console.log(camp.name)
 
-		return(     
+		return(
       <form onSubmit = {handleSubmit(this.onSubmit.bind(this))}>
 
         <Field
@@ -61,11 +61,11 @@ class CampsEdit extends Component{
           label = "Fees"
           name  = "fees"
           component = {this.renderField}
-        /> 
+        />
         <Field
           label = "Course"
           name  = "course"
-          component = {this.renderField} 
+          component = {this.renderField}
         />
         <Field
           label = "Website"
@@ -76,7 +76,7 @@ class CampsEdit extends Component{
       </form>
     );
 	}
-} 
+}
 
 function validate(values) {
 	// body...
@@ -84,7 +84,7 @@ function validate(values) {
 	if(!values.name){
 		errors.name="Enter the name";
 	}
-	
+
 	if(!values.fees){
 		errors.fees="Enter the fees";
 	}
@@ -97,7 +97,7 @@ function validate(values) {
 		errors.website = "enter the website"
 	}
 
-	return errors;	
+	return errors;
 }
 
 function mapStateToProps({ camps}, ownProps){
@@ -106,7 +106,7 @@ function mapStateToProps({ camps}, ownProps){
 export default reduxForm({
 	validate,
 	form: 'PostNewCamp',
-	enableReinitialize: true,		
+	enableReinitialize: true,
 })(
 connect(mapStateToProps,{updateCamps,fetchCamp})(CampsEdit)
 );
