@@ -9,7 +9,7 @@ export const LOGIN_FAILED = "LOGIN_FAILED";
 
 
 // export const CREATE_SESSIONS = 'create_sessions';
-const SESSION_URL="http://localhost:3000";
+const SESSION_URL="https://pure-sea-86815.herokuapp.com";
 
 
 export function createUsers(values){

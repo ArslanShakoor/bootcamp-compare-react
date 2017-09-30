@@ -4,11 +4,11 @@ export const FETCH_CAMP = 'fetch_camp';
 export const CREATE_CAMPS = 'create_camps';
 export const DELETE_CAMP = 'delete_camp';
 export const UPDATE_CAMP = 'update_camp';
-const ROOT_URL = 'http://localhost:3000/';
+const ROOT_URL = "https://pure-sea-86815.herokuapp.com";
 
 
 export function fetchCamps(){
-  const request = axios.get(`${ROOT_URL}camps`);
+  const request = axios.get(`${ROOT_URL}/camps`);
 	return{
 		type: FETCH_CAMPS,
 		payload: request
@@ -16,7 +16,7 @@ export function fetchCamps(){
 }
 
 export function createCamps(values){
-	const request = axios.post(`${ROOT_URL}camps`, values);
+	const request = axios.post(`${ROOT_URL}/camps`, values);
 	return{
 		type: CREATE_CAMPS,
 		payload: request
@@ -24,7 +24,7 @@ export function createCamps(values){
 }
 
 export function fetchCamp(value){
-	const request = axios.get(`${ROOT_URL}camps/${value}`);
+	const request = axios.get(`${ROOT_URL}/camps/${value}`);
 	return{
 		type: FETCH_CAMP,
 		payload: request

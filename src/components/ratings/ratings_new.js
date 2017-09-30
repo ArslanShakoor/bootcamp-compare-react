@@ -65,10 +65,10 @@ class RatingsNew extends Component{
                  this.onChangeCamp(value)
               }}>
               <option />
-              <option value="2">Flatiron</option>
-              <option value="5">Bloc</option>
-              <option value="3">Hack Reactor</option>
-              <option value="4">Firehose</option>
+              <option value="1">Flatiron</option>
+              <option value="4">Thinkful</option>
+              <option value="2">Hack Reactor</option>
+              <option value="3">Firehose</option>
             </select>
           </div>
           <div className = "text-help">

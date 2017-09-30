@@ -4,7 +4,7 @@ import setAuthorizationToken from '../utils/set_authorization_token';
 export const CREATE_RATINGS = 'create_ratings';
 export const FETCH_RATING = 'fetch_rating';
 export const USER_RATING = 'user_rating';
-const ROOT_URL="http://localhost:3000";
+const ROOT_URL= "https://pure-sea-86815.herokuapp.com";
 
 export function createRatings(values, callback){
   return dispatch => {
