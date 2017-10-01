@@ -8,8 +8,9 @@
   "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
   "command": "npm run deploy && npm start",
   "env": {
+  "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
   "NODE_ENV": "production"
-   },
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
