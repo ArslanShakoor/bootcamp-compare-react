@@ -1,4 +1,5 @@
 module.exports = {
+  devtool: '#eval-source-map',
   entry: [
     './src/index.js'
   ],
@@ -22,7 +23,7 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   devServer: {
-    devtool: '#eval-source-map',
+
     historyApiFallback: true,
     contentBase: './'
   }
