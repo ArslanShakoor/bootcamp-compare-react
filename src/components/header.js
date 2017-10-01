@@ -21,7 +21,7 @@ export default class Header extends Component {
 
 getTitle(){
   return(
-    <span className="nav-email">{localStorage.email.toUpperCase()}</span>
+    <span className="nav-email">{localStorage.email}</span>
   );
 }
 
