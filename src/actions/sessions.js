@@ -22,7 +22,7 @@ export function createUsers(values){
 	}
 }
 
-export function destroyUsers(){
+export function destroyUsers(callback){
 
 	localStorage.setItem('email', null);
 	return dispatch => {

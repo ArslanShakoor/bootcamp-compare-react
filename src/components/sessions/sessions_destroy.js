@@ -5,9 +5,12 @@ import { connect } from 'react-redux';
 
 class SessionsDestroy extends Component{
 	componentDidMount(){
-		this.props.destroyUsers()
+		this.props.destroyUsers(()=>{
+			//add the call back fundtio
+			this.props.history.push('/');
+		});
 	}
-	render(){ 
+	render(){
 		return(
       <div>Logout</div>
 		)
