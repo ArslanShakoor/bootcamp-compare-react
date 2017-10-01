@@ -54,19 +54,7 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.18.2"
-  },
-  "jest": {
-    "unmockedModulePathPatterns": [
-      "/qs"
-    ]
   }
 
 
 }
-
-
-# Bind to correct host and port for Heroku
-echo "server-host=\"0.0.0.0\"" >> $CONF_PATH
-echo "server-port=${PORT}" >> $CONF_PATH
-
-exec "$@"
