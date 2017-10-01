@@ -31,7 +31,7 @@ class CampsShow extends Component{
 								<ReactStars
 								  count={5}
 								  size={30}
-								  value={camp.overall}
+								  value={Number(camp.overall)}
 								  edit = {false}
 						    />
 							</div>
@@ -69,7 +69,7 @@ class CampsShow extends Component{
 			<ReactStars
 				count={5}
 				size={15}
-				value={val}
+				value={Number(val)}
 				edit = {false}
 			/>
 	  );
