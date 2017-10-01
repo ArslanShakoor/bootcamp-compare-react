@@ -22,6 +22,7 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   devServer: {
+    devtool: '#eval-source-map',
     historyApiFallback: true,
     contentBase: './'
   }
