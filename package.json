@@ -1,7 +1,6 @@
 {
   "name": "redux-simple-starter",
   "version": "1.0.0",
-  "prod": "NODE_ENV=production node server.js",
   "postinstall": "webpack -p",
   "description": "Simple starter package for Redux with React and Babel support",
   "main": "index.js",
@@ -55,6 +54,6 @@
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.18.2"
 
-    
+
   }
 }
