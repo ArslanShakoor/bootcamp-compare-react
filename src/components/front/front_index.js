@@ -26,7 +26,7 @@ class FrontIndex extends Component{
 
   renderSingleCamp(camp){
     return(
-      <div className = 'col-sm-3'>
+      <div className = 'col-sm-3'  >
         <div className = "camp-block">
           <div class="school-middle">
             <img className="favicon" src={`https://api.statvoo.com/favicon/?url=${camp.website}`}/>
@@ -58,7 +58,7 @@ class FrontIndex extends Component{
     return _.map(this.props.camps, camp=>{
 
       return(
-        <Link to = {`/camps/show/${camp.id}`}>
+        <Link to = {`/camps/show/${camp.id}`} key = {camp.id}>
         {this.renderSingleCamp(camp)}
         </Link>
       );
