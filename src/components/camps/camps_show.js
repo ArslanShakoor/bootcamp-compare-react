@@ -150,10 +150,10 @@ class CampsShow extends Component{
 					<div className="reviews-section">
 	          <div className="reviewer-info">
 						  <div className="col-sm-3 name">
-                {this.name}
+                {rating.name}
               </div>
               <div className="col-sm-3 status">
-                {this.occupation}
+                {rating.occupation}
               </div>
              <div className="col-sm-4 course">
                Web Development Program
