@@ -46,7 +46,7 @@ class FrontIndex extends Component{
             <ReactStars
               count={5}
               size={20}
-              value={camp.avg}
+              value={camp.avg.parseInt}
               edit = {false}
             />
           </div>
