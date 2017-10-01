@@ -21,7 +21,7 @@ export default class Header extends Component {
 
 getTitle(){
   return(
-    
+
     <span className="nav-email">{localStorage.email}</span>
   );
 }
@@ -67,9 +67,7 @@ render() {
 
       <div class="row">
         <Nav pullRight>
-        <LinkContainer to="/camps/new">
-          <NavItem eventKey={1} >New Camp</NavItem>
-        </LinkContainer>
+       
         <LinkContainer to="/camps/index">
           <NavItem eventKey={1} >BOOTCAMPS</NavItem>
         </LinkContainer>
