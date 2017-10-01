@@ -149,13 +149,12 @@ class CampsShow extends Component{
         return(
 					<div className="reviews-section">
 	          <div className="reviewer-info">
-						 <div className="col-sm-3 name">
-             Arslan Shakoor
-
-             </div>
-             <div className="col-sm-3 status">
-             Student
-             </div>
+						  <div className="col-sm-3 name">
+                {this.name}
+              </div>
+              <div className="col-sm-3 status">
+                {this.occupation}
+              </div>
              <div className="col-sm-4 course">
                Web Development Program
              </div>
