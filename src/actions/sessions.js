@@ -33,7 +33,7 @@ export function destroyUsers(callback){
 			})
 
 		}).then(()=> callback())
-
+		 
   }
 }
 
