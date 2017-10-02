@@ -26,15 +26,13 @@ export function destroyUsers(callback){
 
 	localStorage.setItem('email', null);
 	return dispatch => {
+		console.log("destroy all users")
 		axios.delete(`${SESSION_URL}/sessions`).then((response) => {
 
 			Alert.success('Logged out Successfully! See you soon...', {
 				 position: 'bottom',
 			})
-			return {
-				type: DESTROY_SESSIONS,
-				payload: request
-			}
+
 		}).then(()=> callback())
 		.catch((err) => {
 			Alert.error(err.response.data.message, {
