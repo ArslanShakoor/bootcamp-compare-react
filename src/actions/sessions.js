@@ -31,9 +31,7 @@ export function destroyUsers(callback){
 			Alert.success('Logged out Successfully! See you soon...', {
 				 position: 'bottom',
 			})
-
-		}).then(()=> callback())
-		 
+		})
   }
 }
 
