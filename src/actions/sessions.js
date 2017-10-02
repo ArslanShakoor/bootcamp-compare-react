@@ -25,6 +25,7 @@ export function createUsers(values){
 export function destroyUsers(callback){
 
 	localStorage.setItem('email', null);
+	console.log("checked");
   const request = axios.delete(`${SESSION_URL}/sessions`)
 	Alert.success('Logged out', {
 		 position: 'bottom',
