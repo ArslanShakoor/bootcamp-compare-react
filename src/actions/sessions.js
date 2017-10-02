@@ -33,11 +33,7 @@ export function destroyUsers(callback){
 			})
 
 		}).then(()=> callback())
-		.catch((err) => {
-			Alert.error(err.response, {
-				 position: 'bottom',
-			})
-		})
+
   }
 }
 
