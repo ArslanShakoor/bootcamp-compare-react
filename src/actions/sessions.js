@@ -25,12 +25,20 @@ export function createUsers(values){
 export function destroyUsers(callback){
 
 	localStorage.setItem('email', null);
-	console.log("checked");
-  const request = axios.delete(`${SESSION_URL}/sessions`)
-	Alert.success('Logged out', {
-		 position: 'bottom',
-	})
+	return dispatch => {
+		axios.delete(`${SESSION_URL}/sessions`).then((response) => {
 
+			Alert.success('Logged out Successfully! See you soon...', {
+				 position: 'bottom',
+			})
+			 
+		}).then(()=> callback())
+		.catch((err) => {
+			Alert.error(err.response.data.message, {
+				 position: 'bottom',
+			})
+		})
+  }
 }
 
 
