@@ -31,10 +31,10 @@ export function destroyUsers(callback){
 			Alert.success('Logged out Successfully! See you soon...', {
 				 position: 'bottom',
 			})
-			 
+
 		}).then(()=> callback())
 		.catch((err) => {
-			Alert.error(err.response.data.message, {
+			Alert.error(err.response, {
 				 position: 'bottom',
 			})
 		})
