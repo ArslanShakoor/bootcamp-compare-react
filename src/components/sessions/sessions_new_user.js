@@ -26,7 +26,10 @@ class SessionsNewUser extends Component{
   }
 
 	onSubmit(values){
-    this.props.createUsers(values)
+    this.props.createUsers(values,()=>{
+			//add the call back fundtio
+			this.props.history.push('/login');
+		});
 	}
 	render(){
     const {handleSubmit, sessions} = this.props;

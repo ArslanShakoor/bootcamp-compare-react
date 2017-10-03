@@ -12,13 +12,24 @@ export const LOGIN_FAILED = "LOGIN_FAILED";
 const SESSION_URL="https://pure-sea-86815.herokuapp.com";
 
 
-export function createUsers(values){
-	const request = axios.post(`${SESSION_URL}/user`, values);
+export function createUsers(values,callback){
+	return dispatch => {
+		const request = axios.post(`${SESSION_URL}/user`, values).then((res) =>{
+			Alert.success('You are successfully signed up', {
+				 position: 'bottom',
+			})
+		 return{
+			type: CREATE_USERS,
+			payload: request
+		  }
+		}).
+		then(()=> callback()).
+		catch((err) =>  {
+				Alert.error(err, {
+           position: 'bottom',
+        })
 
-	console.log(request);
-	return{
-		type: CREATE_USERS,
-		payload: request
+		})
 	}
 }
 
@@ -31,6 +42,13 @@ export function destroyUsers(callback){
 			Alert.success('Logged out Successfully! See you soon...', {
 				 position: 'bottom',
 			})
+		}).
+		then(()=> callback()).
+		catch((err) =>  {
+				Alert.error(err, {
+           position: 'bottom',
+        })
+
 		})
   }
 }
