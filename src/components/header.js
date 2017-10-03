@@ -67,7 +67,7 @@ render() {
 
       <div class="row">
         <Nav pullRight>
-       
+
         <LinkContainer to="/camps/index">
           <NavItem eventKey={1} >BOOTCAMPS</NavItem>
         </LinkContainer>
