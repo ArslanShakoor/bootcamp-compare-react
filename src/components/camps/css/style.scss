@@ -34,8 +34,9 @@ label .req {
 }
 .camp-info{
   position:relative;
-  background-color: #fff;
+  background-color: $form-backgroud;
   border: 2px solid #1ab188;
+  color: $text-color
 
 }
 
@@ -56,12 +57,14 @@ label .req {
 }
 
 .reviews-section{
+  color: $text-color;
   margin-top: 10px;
-  background-color: #fff;
+  background-color: $form-backgroud;
   border: 2px solid #1ab188;
 }
 .reviewer-info{
 overflow: hidden;
+color: $text-color
 
 }
 .reviewer-info > .name{
@@ -97,6 +100,7 @@ overflow: hidden;
  padding: 13px;
  font-size: 2rem;
  font-weight: bold;
+ color: $label-color;
 }
 .review-description{
  padding: 13px;
