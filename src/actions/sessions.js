@@ -14,7 +14,7 @@ const SESSION_URL="https://pure-sea-86815.herokuapp.com";
 
 export function createUsers(values,callback){
 	return dispatch => {
-		const request = axios.post(`${SESSION_URL}/user`, values).then((res) =>{
+		const request = axios.post(`${SESSION_URL}/user`, values).then((response) =>{
 			Alert.success('You are successfully signed up', {
 				 position: 'bottom',
 			})
@@ -24,10 +24,12 @@ export function createUsers(values,callback){
 		  }
 		}).
 		then(()=> callback()).
-		catch((err) =>  {
-				Alert.error(err, {
+		catch((error) =>  {
+			if (error.response.status == 422){
+				Alert.error("Email has already taken", {
            position: 'bottom',
         })
+			}
 
 		})
 	}
