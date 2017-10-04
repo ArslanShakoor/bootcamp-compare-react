@@ -1,5 +1,4 @@
-
-
+@import "../../../partials/colors";
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -28,7 +27,7 @@ a:hover {
 .form {
   background: rgba(19, 35, 47, 0.9);
   padding: 40px;
-  max-width: 1300px;
+  max-width: 600px;
   margin: 40px auto;
   border-radius: 4px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
@@ -60,11 +59,11 @@ a:hover {
 }
 .tab-group li a:hover {
   background: #179b77;
-  color: #ffffff;
+  color: $text-color;
 }
 .tab-group .active a {
   background: #1ab188;
-  color: #ffffff;
+  color: $text-color;
 }
 
 .tab-content > div:last-child {
@@ -73,7 +72,7 @@ a:hover {
 
 h1 {
   text-align: center;
-  color: #ffffff;
+  color: $text-color;
   font-weight: 300;
   margin: 0 0 40px;
 }
@@ -86,10 +85,9 @@ label {
   font-size: 22px;
 }
 label .req {
-  color: #1ab188;
-}
-label .req:after {
-  content: "*";
+  margin: 2px;
+  color: white;
+
 }
 
 label.active {
@@ -103,10 +101,10 @@ label.active .req {
 }
 
 label.highlight {
-  color: #ffffff;
+  color: $text-color;
 }
 
-input, textarea , select{
+input, textarea {
   font-size: 22px;
   display: block;
   width: 100%;
@@ -115,49 +113,19 @@ input, textarea , select{
   background: none;
   background-image: none;
   border: 1px solid #a0b3b0;
-  color: #ffffff;
+  color: $text-color;
   border-radius: 0;
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
   transition: border-color .25s ease, box-shadow .25s ease;
 }
-
-
-
 input:focus, textarea:focus {
   outline: 0;
   border-color: #1ab188;
 }
 input:-webkit-autofill {
     -webkit-box-shadow:  0 0 0 30px rgba(19, 35, 47, 0.92) inset;
-    -webkit-text-fill-color: #ffffff;
+    -webkit-text-fill-color: $text-color;
 }
-
-input[type="checkbox"]{
-cursor: pointer;
--webkit-appearance: none;
-appearance: none;
-background: #34495E;
-border-radius: 1px;
-box-sizing: border-box;
-position: relative;
-box-sizing: content-box ;
-width: 33px;
-height: 33px;
-border-width: 0;
-transition: all .3s linear;
-}
-
-input[type="checkbox"]:focus{
-  outline: 0;
-  border-color: #1ab188;
-}
-
-input[type="checkbox"]:checked{
-  background-image: url(http://www.southhamsevents.co.uk/this_weekend/files/tick.png);
-}
-
-
-
 
 textarea {
   border: 2px solid #a0b3b0;
@@ -168,7 +136,6 @@ textarea {
   position: relative;
   margin-bottom: 40px;
 }
-
 
 .top-row:after {
   content: "";
@@ -194,7 +161,7 @@ textarea {
   text-transform: uppercase;
   letter-spacing: .1em;
   background: #1ab188;
-  color: #ffffff;
+  color: $text-color;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   -webkit-appearance: none;

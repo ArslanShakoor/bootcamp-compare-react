@@ -3,7 +3,7 @@ import {fetchCamps} from '../../actions';
 import {connect} from 'react-redux';
 import ReactStars from 'react-stars';
 import { Link } from "react-router-dom";
-import './css/index.css';
+import './css/index.scss';
 
 class FrontIndex extends Component{
 

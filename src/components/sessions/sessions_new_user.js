@@ -4,7 +4,7 @@ import { fetchSessions, createUsers } from '../../actions/sessions';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import './css/style.css';
+import './css/style.scss';
 
 class SessionsNewUser extends Component{
   renderField(field){

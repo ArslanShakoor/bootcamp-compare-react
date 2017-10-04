@@ -16,8 +16,20 @@ module.exports = {
         presets: ['react', 'es2015', 'stage-1']
       }
     },
-    { test: /\.css$/, loader: "style-loader!css-loader" },
-      { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel'}]
+    { test: /\.css$/,
+      loader: "style-loader!css-loader" },
+    {
+      test: /\.sass$/,
+      loaders: ["style", "css", "sass"]
+    },
+    {
+      test: /\.scss$/,
+      loaders: ["style", "css", "sass"]
+    },
+    { test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      loader: 'babel'
+    }]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']

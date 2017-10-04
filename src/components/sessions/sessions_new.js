@@ -3,7 +3,7 @@ import {Field, reduxForm } from 'redux-form';
 import { fetchSessions } from '../../actions/sessions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './css/style.css';
+import './css/style.scss';
 
 
 class SessionsNew extends Component{

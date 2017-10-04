@@ -4,7 +4,7 @@ import { fetchCamp, deleteCamp } from '../../actions';
 import { connect} from 'react-redux';
 import { Link } from "react-router-dom";
 import ReactStars from 'react-stars';
-import './css/style.css'
+import './css/style.scss'
 
 class CampsShow extends Component{
 

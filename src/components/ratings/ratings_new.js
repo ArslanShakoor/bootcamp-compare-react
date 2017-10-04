@@ -3,7 +3,7 @@ import ReactStars from 'react-stars'
 import { createRatings} from '../../actions/ratings';
 import { Field, reduxForm, initialize, change} from 'redux-form';
 import { connect } from 'react-redux';
-import "./css/rating_style.css"
+import "./css/rating_style.scss"
 
 class RatingsNew extends Component{
 
