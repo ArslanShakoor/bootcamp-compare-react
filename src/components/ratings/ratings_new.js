@@ -230,7 +230,7 @@ class RatingsNew extends Component{
         />
         </div>
         </div>
-        <button type = "submit"  className = "btn btn-primary">Submit</button>
+        <button type = "submit" className = "button button-block">Submit</button>
       </form>
       </div>
 
