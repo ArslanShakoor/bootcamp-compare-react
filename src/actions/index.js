@@ -8,7 +8,7 @@ const ROOT_URL = "https://pure-sea-86815.herokuapp.com";
 
 
 export function fetchCamps(){
-  const request = axios.get(`${ROOT_URL}/camps`);
+  const request = axios.get(`${ROOT_URL}/camps/featured`);
 	return{
 		type: FETCH_CAMPS,
 		payload: request
